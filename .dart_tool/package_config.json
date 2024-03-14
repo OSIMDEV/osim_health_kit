@@ -146,13 +146,13 @@
       "languageVersion": "3.2"
     },
     {
-      "name": "osim_health_kit",
+      "name": "healthkit",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2024-03-14T02:53:48.073502Z",
+  "generated": "2024-03-14T03:24:07.871117Z",
   "generator": "pub",
   "generatorVersion": "3.2.6"
 }
