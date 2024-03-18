@@ -1,5 +1,4 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:healthkit/api/healthkit.dart';
 import 'package:healthkit/healthkit_method_channel.dart';
 import 'package:healthkit/healthkit_platform_interface.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
@@ -42,7 +41,6 @@ void main() {
   });
 
   test('getPlatformVersion', () async {
-    Healthkit healthkitPlugin = Healthkit();
     MockHealthkitPlatform fakePlatform = MockHealthkitPlatform();
     HealthkitPlatform.instance = fakePlatform;
 

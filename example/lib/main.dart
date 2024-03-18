@@ -17,7 +17,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String _platformVersion = 'Unknown';
-  final _healthkitPlugin = Healthkit();
 
   @override
   void initState() {
@@ -31,8 +30,8 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion = await _healthkitPlugin.loadData("huawei") ??
-          'Unknown platform version';
+      platformVersion =
+          await healthKit.loadData("huawei") ?? 'Unknown platform version';
     } on PlatformException catch (ex) {
       platformVersion = 'Failed to get platform version.: $ex';
     }

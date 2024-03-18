@@ -1,6 +1,8 @@
 import 'package:healthkit/healthkit_platform_interface.dart';
 
-class Healthkit {
+final HealthKit healthKit = HealthKit();
+
+class HealthKit {
   void requireAuth(String provider) {
     HealthkitPlatform.instance.requireAuth(provider);
   }
