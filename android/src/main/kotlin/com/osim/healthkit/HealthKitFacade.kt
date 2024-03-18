@@ -36,13 +36,11 @@ object HealthKitFacade {
                 IHealthKitProvider::class.java.declaredMethods.find {
                     it.name == call.method
                 }?.apply {
-                    result.success(
-                        if (((call.arguments as? Map<*, *>)?.size ?: -1) > 1) {
-                            invoke(provider, context, result, call.arguments)
-                        } else {
-                            invoke(provider, context, result)
-                        }
-                    )
+                    if (((call.arguments as? Map<*, *>)?.size ?: -1) > 1) {
+                        invoke(provider, context, result, call.arguments)
+                    } else {
+                        invoke(provider, context, result, null)
+                    }
                 }
             } catch (ex: Exception) {
                 result.notImplemented()

@@ -11,29 +11,50 @@ class MethodChannelHealthkit extends HealthkitPlatform {
 
   @override
   void requireAuth(String provider) async {
-    methodChannel.invokeMethod<void>('requireAuth', provider);
+    methodChannel.invokeMethod<void>(
+      'requireAuth',
+      {
+        "provider": provider,
+      },
+    );
   }
 
   @override
   void cancelAuth(String provider) async {
-    methodChannel.invokeMethod<void>('cancelAuth', provider);
+    methodChannel.invokeMethod<void>(
+      'cancelAuth',
+      {
+        "provider": provider,
+      },
+    );
   }
 
   @override
   Future<bool?> testAuth(String provider) async {
-    return methodChannel.invokeMethod<bool>('testAuth', provider);
+    return methodChannel.invokeMethod<bool>(
+      'testAuth',
+      {
+        "provider": provider,
+      },
+    );
   }
 
   @override
   Future<dynamic> loadData(String provider) async {
-    return methodChannel.invokeMethod<dynamic>('loadData', {
-      "provider": provider,
-    });
+    return methodChannel.invokeMethod<dynamic>(
+      'loadData',
+      {
+        "provider": provider,
+      },
+    );
   }
 
   @override
   Future<String?> getVendor(String provider) async =>
-      methodChannel.invokeMethod<String>('getVendor', {
-        "provider": provider,
-      });
+      methodChannel.invokeMethod<String>(
+        'getVendor',
+        {
+          "provider": provider,
+        },
+      );
 }

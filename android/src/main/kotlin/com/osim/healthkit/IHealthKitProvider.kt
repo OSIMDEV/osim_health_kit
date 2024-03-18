@@ -8,13 +8,13 @@ interface IHealthKitProvider {
 
     val type : HealthKitProviderType get() = HealthKitProviderType.Unknown
 
-    fun requireAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<String, Any?>)
+    fun requireAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?)
 
-    fun cancelAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<String, Any?>)
+    fun cancelAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?)
 
-    fun testAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<String, Any?>) = false
+    fun testAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?)
 
-    fun loadData(context: Activity?, cb: MethodChannel.Result?): Any? = null
+    fun loadData(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?)
 
-    fun getVendor(context: Activity?, cb: MethodChannel.Result?)
+    fun getVendor(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?)
 }

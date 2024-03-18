@@ -8,12 +8,11 @@ import com.blankj.utilcode.util.DeviceUtils
 import com.huawei.hms.hihealth.HuaweiHiHealth
 import com.huawei.hms.hihealth.data.Scopes
 import com.osim.healthkit.HealthKitBaseActivity
-import com.osim.healthkit.IHealthKitProvider
 import io.flutter.plugin.common.MethodChannel
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
 
-class HuaWeiHealthKitProvider : IHealthKitProvider {
+class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
 
     companion object {
         private const val TAG = "HuaWeiHealthKitHelper"
@@ -57,7 +56,7 @@ class HuaWeiHealthKitProvider : IHealthKitProvider {
     override val type: HealthKitProviderType
         get() = HealthKitProviderType.HuaWei
 
-    override fun requireAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<String, Any?>) {
+    override fun requireAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
         (context as? HealthKitBaseActivity)?.apply {
             val intent = HuaweiHiHealth.getSettingController(this).requestAuthorizationIntent(scopes, true)
             launcher.launch(intent) {
@@ -67,18 +66,7 @@ class HuaWeiHealthKitProvider : IHealthKitProvider {
         }
     }
 
-    override fun cancelAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<String, Any?>) {
-
-    }
-
-    override fun testAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<String, Any?>) = false
-
-    override fun loadData(context: Activity?, cb: MethodChannel.Result?): Any? {
-        return DeviceUtils.getManufacturer()
-    }
-
-    override fun getVendor(context: Activity?, cb: MethodChannel.Result?) {
-        Log.d("xxx", "getVendor")
+    override fun getVendor(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
         cb?.success(DeviceUtils.getManufacturer())
     }
 }

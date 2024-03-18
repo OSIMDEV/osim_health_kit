@@ -33,6 +33,7 @@ class _MyAppState extends State<MyApp> {
     try {
       platformVersion = await healthKit.getVendor(ProviderType.huawei.type) ??
           'Unknown platform version';
+      healthKit.requireAuth(ProviderType.huawei.type);
     } on PlatformException catch (ex) {
       platformVersion = 'Failed to get platform version.: $ex';
     }

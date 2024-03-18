@@ -6,6 +6,8 @@ enum class HealthKitProviderType(private val type: String) {
     Unknown("unknown");
 
     companion object {
-        fun match(type: String?) = values().find { type == it.type } ?: Unknown
+        fun match(type: String?) = type?.lowercase()?.let { `this` ->
+            values().find { `this` == it.type } ?: Unknown
+        } ?: Unknown
     }
 }
