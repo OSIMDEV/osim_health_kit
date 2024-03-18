@@ -1,4 +1,4 @@
-import 'healthkit_platform_interface.dart';
+import 'package:healthkit/healthkit_platform_interface.dart';
 
 class Healthkit {
   void requireAuth(String provider) {

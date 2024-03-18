@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:healthkit/healthkit.dart';
+import 'package:healthkit/api/healthkit.dart';
 
 void main() {
   runApp(const MyApp());
