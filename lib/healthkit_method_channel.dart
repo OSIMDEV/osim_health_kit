@@ -10,8 +10,24 @@ class MethodChannelHealthkit extends HealthkitPlatform {
   final methodChannel = const MethodChannel('healthkit');
 
   @override
-  Future<String?> getPlatformVersion() async {
-    final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
-    return version;
+  void requireAuth(String provider) async {
+    methodChannel.invokeMethod<void>('requireAuth', provider);
+  }
+
+  @override
+  void cancelAuth(String provider) async {
+    methodChannel.invokeMethod<void>('cancelAuth', provider);
+  }
+
+  @override
+  Future<bool?> testAuth(String provider) async {
+    return methodChannel.invokeMethod<bool>('testAuth', provider);
+  }
+
+  @override
+  Future<dynamic> getData(String provider) async {
+    return methodChannel.invokeMethod<dynamic>('getData', {
+      "provider": provider,
+    });
   }
 }

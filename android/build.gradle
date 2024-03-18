@@ -6,11 +6,13 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://developer.huawei.com/repo/' }
     }
 
     dependencies {
         classpath 'com.android.tools.build:gradle:7.3.0'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath("com.huawei.agconnect:agcp:1.9.1.301")
     }
 }
 
@@ -18,15 +20,22 @@ allprojects {
     repositories {
         google()
         mavenCentral()
+        maven { url 'https://developer.huawei.com/repo/' }
     }
 }
 
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.huawei.agconnect'
+apply plugin: 'kotlin-kapt'
 
 android {
     if (project.android.hasProperty("namespace")) {
         namespace 'com.osim.healthkit'
+    }
+
+    ext {
+        health_kit_settings = readHealthKitSettings()
     }
 
     compileSdkVersion 33
@@ -46,10 +55,18 @@ android {
     }
 
     defaultConfig {
-        minSdkVersion 19
+        minSdkVersion 23
+
+        manifestPlaceholders['huawei_healthkit_appid'] = health_kit_settings['HEALTH_KIT_ID_HUAWEI']
     }
 
     dependencies {
+        implementation("androidx.activity:activity-ktx:1.6.0")
+        implementation 'com.blankj:utilcodex:1.31.1'
+        // HuaWei HealthKit
+        implementation 'com.huawei.hms:hwid:6.12.0.300'
+        implementation 'com.huawei.hms:health:6.11.0.303'
+        implementation 'com.huawei.hihealth:hihealthkit:6.7.0.300'
         testImplementation 'org.jetbrains.kotlin:kotlin-test'
         testImplementation 'org.mockito:mockito-core:5.0.0'
     }
@@ -65,4 +82,17 @@ android {
             }
         }
     }
+}
+
+def readHealthKitSettings() {
+    def ret = [:]
+    def lines = file('health_kit.settings.properties').readLines()
+    lines.removeAll {
+        it.startsWith('#')
+    }
+    lines.forEach {
+        def (key, value) = it.replaceAll("\\s+", '').split('=')
+        ret[key] = value
+    }
+    return ret
 }

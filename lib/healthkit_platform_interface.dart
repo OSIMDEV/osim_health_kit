@@ -23,7 +23,19 @@ abstract class HealthkitPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  Future<String?> getPlatformVersion() {
-    throw UnimplementedError('platformVersion() has not been implemented.');
+  void requireAuth(String provider) async {
+    throw UnimplementedError('requireAuth() has not been implemented.');
+  }
+
+  void cancelAuth(String provider) async {
+    throw UnimplementedError('cancelAuth() has not been implemented.');
+  }
+
+  Future<bool?> testAuth(String provider) async {
+    throw UnimplementedError('testAuth() has not been implemented.');
+  }
+
+  Future<dynamic> getData(String provider) async {
+    throw UnimplementedError('getData() has not been implemented.');
   }
 }

@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'dart:async';
 
+import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:healthkit/healthkit.dart';
 
@@ -31,10 +31,10 @@ class _MyAppState extends State<MyApp> {
     // Platform messages may fail, so we use a try/catch PlatformException.
     // We also handle the message potentially returning null.
     try {
-      platformVersion =
-          await _healthkitPlugin.getPlatformVersion() ?? 'Unknown platform version';
-    } on PlatformException {
-      platformVersion = 'Failed to get platform version.';
+      platformVersion = await _healthkitPlugin.getData("huawei") ??
+          'Unknown platform version';
+    } on PlatformException catch (ex) {
+      platformVersion = 'Failed to get platform version.: $ex';
     }
 
     // If the widget was removed from the tree while the asynchronous platform
