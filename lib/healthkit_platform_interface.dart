@@ -23,11 +23,11 @@ abstract class HealthkitPlatform extends PlatformInterface {
     _instance = instance;
   }
 
-  void requireAuth(String provider) async {
+  Future<bool?> requireAuth(String provider) async {
     throw UnimplementedError('requireAuth() has not been implemented.');
   }
 
-  void cancelAuth(String provider) async {
+  Future<bool?> cancelAuth(String provider) async {
     throw UnimplementedError('cancelAuth() has not been implemented.');
   }
 

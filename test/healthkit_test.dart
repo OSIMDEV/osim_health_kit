@@ -7,19 +7,21 @@ class MockHealthkitPlatform
     with MockPlatformInterfaceMixin
     implements HealthkitPlatform {
   @override
-  void cancelAuth(String provider) {
-    // TODO: implement cancelAuth
-  }
-
-  @override
-  Future loadData(String provider) {
+  Future<bool?> cancelAuth(String provider) {
     // TODO: implement loadData
     throw UnimplementedError();
   }
 
   @override
-  void requireAuth(String provider) {
-    // TODO: implement requireAuth
+  Future<dynamic> loadData(String provider) {
+    // TODO: implement loadData
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<bool?> requireAuth(String provider) {
+    // TODO: implement loadData
+    throw UnimplementedError();
   }
 
   @override
