@@ -12,6 +12,8 @@ class Healthkit {
   Future<bool?> testAuth(String provider) =>
       HealthkitPlatform.instance.testAuth(provider);
 
-  Future<dynamic> getData(String provider) =>
-      HealthkitPlatform.instance.getData(provider);
+  Future<dynamic> loadData(String provider) =>
+      HealthkitPlatform.instance.loadData(provider);
+
+  Future<String?> get vendor => HealthkitPlatform.instance.vendor;
 }

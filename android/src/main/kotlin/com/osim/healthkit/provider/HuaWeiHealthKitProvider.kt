@@ -76,4 +76,8 @@ class HuaWeiHealthKitProvider : IHealthKitProvider {
     override fun loadData(context: Activity?, cb: MethodChannel.Result?): Any? {
         return DeviceUtils.getManufacturer()
     }
+
+    override fun getVendor(cb: MethodChannel.Result?) {
+        cb?.success(DeviceUtils.getManufacturer())
+    }
 }

@@ -13,8 +13,8 @@ class MockHealthkitPlatform
   }
 
   @override
-  Future getData(String provider) {
-    // TODO: implement getData
+  Future loadData(String provider) {
+    // TODO: implement loadData
     throw UnimplementedError();
   }
 
@@ -28,6 +28,10 @@ class MockHealthkitPlatform
     // TODO: implement testAuth
     throw UnimplementedError();
   }
+
+  @override
+  // TODO: implement vendor
+  Future<String?> get vendor => throw UnimplementedError();
 }
 
 void main() {

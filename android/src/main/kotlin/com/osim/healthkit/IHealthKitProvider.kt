@@ -15,4 +15,6 @@ interface IHealthKitProvider {
     fun testAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<String, Any?>) = false
 
     fun loadData(context: Activity?, cb: MethodChannel.Result?): Any? = null
+
+    fun getVendor(cb: MethodChannel.Result?)
 }
