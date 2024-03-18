@@ -16,5 +16,5 @@ interface IHealthKitProvider {
 
     fun loadData(context: Activity?, cb: MethodChannel.Result?): Any? = null
 
-    fun getVendor(cb: MethodChannel.Result?)
+    fun getVendor(context: Activity?, cb: MethodChannel.Result?)
 }

@@ -30,7 +30,7 @@ class MockHealthkitPlatform
 
   @override
   // TODO: implement vendor
-  Future<String?> get vendor => throw UnimplementedError();
+  Future<String?> getVendor(String provider) => throw UnimplementedError();
 }
 
 void main() {

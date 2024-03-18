@@ -23,6 +23,6 @@ class DefaultHealthKitProvider : IHealthKitProvider {
         return super.loadData(context, cb)
     }
 
-    override fun getVendor(cb: MethodChannel.Result?) {
+    override fun getVendor(context: Activity?, cb: MethodChannel.Result?) {
     }
 }

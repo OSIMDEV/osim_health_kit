@@ -2,6 +2,7 @@ package com.osim.healthkit
 
 import android.app.Activity
 import android.app.Application
+import android.util.Log
 import com.blankj.utilcode.util.Utils
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
@@ -36,10 +37,10 @@ object HealthKitFacade {
                     it.name == call.method
                 }?.apply {
                     result.success(
-                        if ((call.arguments as Map<*, *>).size > 1) {
-                            invoke(provider, context, call.arguments)
+                        if (((call.arguments as? Map<*, *>)?.size ?: -1) > 1) {
+                            invoke(provider, context, result, call.arguments)
                         } else {
-                            invoke(provider, context)
+                            invoke(provider, context, result)
                         }
                     )
                 }

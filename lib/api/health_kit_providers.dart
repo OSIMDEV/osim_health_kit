@@ -2,9 +2,9 @@ enum ProviderType {
   huawei._("huawei"),
   samsung._("samsung");
 
-  const ProviderType._(this._id);
+  const ProviderType._(this._type);
 
-  get id => _id;
+  String get type => _type;
 
-  final String _id;
+  final String _type;
 }

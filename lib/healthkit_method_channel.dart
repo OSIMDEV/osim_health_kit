@@ -32,6 +32,8 @@ class MethodChannelHealthkit extends HealthkitPlatform {
   }
 
   @override
-  Future<String?> get vendor async =>
-      methodChannel.invokeMethod<String>('getVendor');
+  Future<String?> getVendor(String provider) async =>
+      methodChannel.invokeMethod<String>('getVendor', {
+        "provider": provider,
+      });
 }

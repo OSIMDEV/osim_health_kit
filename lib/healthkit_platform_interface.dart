@@ -39,7 +39,7 @@ abstract class HealthkitPlatform extends PlatformInterface {
     throw UnimplementedError('loadData() has not been implemented.');
   }
 
-  Future<String?> get vendor async {
+  Future<String?> getVendor(String provider) async {
     throw UnimplementedError('get vendor has not been implemented.');
   }
 }

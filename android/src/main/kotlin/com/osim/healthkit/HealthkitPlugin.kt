@@ -9,7 +9,6 @@ import io.flutter.plugin.common.MethodChannel
 import io.flutter.plugin.common.MethodChannel.MethodCallHandler
 import io.flutter.plugin.common.MethodChannel.Result
 
-
 /** HealthkitPlugin */
 class HealthkitPlugin: FlutterPlugin, MethodCallHandler {
   /// The MethodChannel that will the communication between Flutter and native Android
@@ -36,13 +35,6 @@ class HealthkitPlugin: FlutterPlugin, MethodCallHandler {
 
   override fun onMethodCall(call: MethodCall, result: Result) {
     HealthKitFacade.handle(activity, call, result)
-
-
-//    if (call.method == "getPlatformVersion") {
-//      result.success("Android ${android.os.Build.VERSION.RELEASE}")
-//    } else {
-//      result.notImplemented()
-//    }
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {

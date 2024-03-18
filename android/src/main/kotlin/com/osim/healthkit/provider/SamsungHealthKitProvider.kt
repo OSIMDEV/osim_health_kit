@@ -24,7 +24,7 @@ class SamsungHealthKitProvider : IHealthKitProvider {
         return DeviceUtils.getManufacturer()
     }
 
-    override fun getVendor(cb: MethodChannel.Result?) {
+    override fun getVendor(context: Activity?, cb: MethodChannel.Result?) {
         TODO("Not yet implemented")
     }
 }

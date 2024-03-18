@@ -17,5 +17,6 @@ class HealthKit {
   Future<dynamic> loadData(String provider) =>
       HealthkitPlatform.instance.loadData(provider);
 
-  Future<String?> get vendor => HealthkitPlatform.instance.vendor;
+  Future<String?> getVendor(String provider) =>
+      HealthkitPlatform.instance.getVendor(provider);
 }
