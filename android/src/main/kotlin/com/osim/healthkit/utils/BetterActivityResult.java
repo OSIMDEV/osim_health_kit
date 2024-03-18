@@ -1,7 +1,6 @@
 package com.osim.healthkit.utils;
 
 import android.content.Intent;
-
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCaller;
 import androidx.activity.result.ActivityResultLauncher;

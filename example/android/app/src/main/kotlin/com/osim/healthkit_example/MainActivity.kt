@@ -1,6 +1,6 @@
 package com.osim.healthkit_example
 
-import io.flutter.embedding.android.FlutterActivity
+import com.osim.healthkit.HealthKitBaseActivity
 
-class MainActivity: FlutterActivity() {
+class MainActivity: HealthKitBaseActivity() {
 }
