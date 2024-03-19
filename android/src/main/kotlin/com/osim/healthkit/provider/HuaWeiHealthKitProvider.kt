@@ -15,7 +15,7 @@ import com.huawei.hihealthkit.data.store.HiHealthDataStore
 import com.huawei.hihealthkit.data.type.HiHealthSessionType
 import com.huawei.hms.hihealth.HuaweiHiHealth
 import com.huawei.hms.hihealth.data.Scopes
-import com.osim.healthkit.HealthKitBaseActivity
+import com.osim.healthkit.IHealthKitLaunchProvider
 import io.flutter.plugin.common.MethodChannel
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -65,18 +65,20 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
         get() = HealthKitProviderType.HuaWei
 
     override fun requireAuth(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
-        (context as? HealthKitBaseActivity)?.apply {
-            val intent = HuaweiHiHealth.getSettingController(this).requestAuthorizationIntent(scopes, true)
-            launcher.launch(intent) {
-                var success = false
-                try {
-                    val result = HuaweiHiHealth.getSettingController(this).parseHealthKitAuthResultFromIntent(it.data)
-                    success = result?.isSuccess ?: false
-                } catch (ex: Exception) {
-                    ex.printStackTrace()
-                }
-                cb?.success(success)
-            }
+        context?.apply {
+            (context as? IHealthKitLaunchProvider)?.let {
+                val intent = HuaweiHiHealth.getSettingController(this).requestAuthorizationIntent(scopes, true)
+                it.launcher?.launch(intent) {
+                    var success = false
+                    try {
+                        val result = HuaweiHiHealth.getSettingController(this).parseHealthKitAuthResultFromIntent(it.data)
+                        success = result?.isSuccess ?: false
+                    } catch (ex: Exception) {
+                        ex.printStackTrace()
+                    }
+                    cb?.success(success)
+                } ?: cb?.success(false)
+            } ?: cb?.success(false)
         } ?: cb?.success(false)
     }
 
