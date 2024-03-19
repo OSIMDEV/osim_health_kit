@@ -130,6 +130,7 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
                             when {
                                 resultCode == HiHealthError.SUCCESS && data is List<*> -> {
                                     if (data.isNotEmpty()) {
+                                        Log.d("xxx", "------ ${data.size}")
                                         retrievedData.addAll(data.map { e -> e as HiHealthSessionData })
                                     } else {
                                         Log.e("xxx", "Empty sleep data")
@@ -167,6 +168,7 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
                 }
             }
         }
+        Log.d("xxx", "+++++++ ${retrievedData.size}")
         cb?.success(retrievedData)
     }
 
