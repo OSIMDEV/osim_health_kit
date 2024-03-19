@@ -2,7 +2,9 @@ package com.osim.healthkit.provider
 
 import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.util.Log
 import com.blankj.utilcode.util.DeviceUtils
 import com.huawei.hihealth.error.HiHealthError
@@ -172,5 +174,18 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
                 ""
             }
         )
+    }
+
+    override fun navToSettings(context: Activity?, cb: MethodChannel.Result?) {
+        context?.apply {
+            try {
+                val appInfo = context.packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)
+                val appId = appInfo.metaData.getString(APP_ID_KEY)
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("$URI_THIRD_PARTY_ACCOUNT_AUTH$appId"))
+                startActivity(intent)
+            } catch (ex: java.lang.Exception) {
+                ex.printStackTrace()
+            }
+        }
     }
 }

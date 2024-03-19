@@ -28,4 +28,8 @@ abstract class BaseHealthKitProvider : IHealthKitProvider {
     override fun getVendor(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
         cb?.notImplemented()
     }
+
+    override fun navToSettings(context: Activity?, cb: MethodChannel.Result?) {
+        cb?.notImplemented()
+    }
 }
