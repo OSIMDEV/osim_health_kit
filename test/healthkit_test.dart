@@ -13,7 +13,12 @@ class MockHealthkitPlatform
   }
 
   @override
-  Future<dynamic> loadData(String provider) {
+  Future<dynamic> loadData(
+    String provider,
+    double startTime,
+    double endTime,
+    double timeout,
+  ) {
     // TODO: implement loadData
     throw UnimplementedError();
   }
@@ -33,6 +38,9 @@ class MockHealthkitPlatform
   @override
   // TODO: implement vendor
   Future<String?> getVendor(String provider) => throw UnimplementedError();
+
+  @override
+  Future<void> navToSettings(String provider) => throw UnimplementedError();
 }
 
 void main() {

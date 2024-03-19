@@ -12,9 +12,22 @@ class HealthKit {
   Future<bool?> testAuth(String provider) =>
       HealthkitPlatform.instance.testAuth(provider);
 
-  Future<dynamic> loadData(String provider) =>
-      HealthkitPlatform.instance.loadData(provider);
+  Future<dynamic> loadData(
+    String provider,
+    double startTime,
+    double endTime,
+    double timeout,
+  ) =>
+      HealthkitPlatform.instance.loadData(
+        provider,
+        startTime,
+        endTime,
+        timeout,
+      );
 
   Future<String?> getVendor(String provider) =>
       HealthkitPlatform.instance.getVendor(provider);
+
+  Future<void> navToSettings(String provider) =>
+      HealthkitPlatform.instance.navToSettings(provider);
 }

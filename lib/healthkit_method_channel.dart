@@ -35,18 +35,35 @@ class MethodChannelHealthkit extends HealthkitPlatform {
       );
 
   @override
-  Future<dynamic> loadData(String provider) =>
+  Future<dynamic> loadData(
+    String provider,
+    double startTime,
+    double endTime,
+    double timeout,
+  ) =>
       methodChannel.invokeMethod<dynamic>(
         'loadData',
+        {
+          "provider": provider,
+          "startTime": startTime,
+          "endTime": endTime,
+          "timeout": timeout,
+        },
+      );
+
+  @override
+  Future<String?> getVendor(String provider) =>
+      methodChannel.invokeMethod<String>(
+        'getVendor',
         {
           "provider": provider,
         },
       );
 
   @override
-  Future<String?> getVendor(String provider) async =>
-      methodChannel.invokeMethod<String>(
-        'getVendor',
+  Future<void> navToSettings(String provider) =>
+      methodChannel.invokeMethod<void>(
+        'navToSettings',
         {
           "provider": provider,
         },

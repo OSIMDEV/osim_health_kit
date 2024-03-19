@@ -35,11 +35,20 @@ abstract class HealthkitPlatform extends PlatformInterface {
     throw UnimplementedError('testAuth() has not been implemented.');
   }
 
-  Future<dynamic> loadData(String provider) async {
+  Future<dynamic> loadData(
+    String provider,
+    double startTime,
+    double endTime,
+    double timeout,
+  ) async {
     throw UnimplementedError('loadData() has not been implemented.');
   }
 
   Future<String?> getVendor(String provider) async {
     throw UnimplementedError('get vendor has not been implemented.');
+  }
+
+  Future<void> navToSettings(String provider) async {
+    throw UnimplementedError('navToSettings() has not been implemented.');
   }
 }
