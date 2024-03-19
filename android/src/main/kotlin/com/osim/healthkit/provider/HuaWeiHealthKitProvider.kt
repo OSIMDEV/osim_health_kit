@@ -115,10 +115,12 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
     override fun loadData(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
         val retrievedData = mutableListOf<HiHealthSessionData>()
         testAuth(context) { authorized ->
+            Log.d("xxx", "1111111111111111111: $authorized")
             if (authorized) {
                 val startTime = (params?.get("startTime") as? Double)?.toLong() ?: -1L
                 val endTime = (params?.get("endTime") as? Double)?.toLong() ?: -1L
                 val timeout = (params?.get("timeout") as? Double)?.toInt() ?: -1
+                Log.d("xxx", "1111111111111111111: $startTime, $endTime, $timeout")
                 if (startTime >= 0L && endTime >= 0L && timeout >= 0) {
                     val hiHealthDataQuery = HiHealthDataQuery(
                         HiHealthSessionType.DATA_SESSION_CORE_SLEEP,
@@ -130,33 +132,33 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
                                     if (data.isNotEmpty()) {
                                         retrievedData.addAll(data.map { e -> e as HiHealthSessionData })
                                     } else {
-                                        Log.e(TAG, "Empty sleep data")
+                                        Log.e("xxx", "Empty sleep data")
                                     }
                                 }
                                 // 参数错误
                                 resultCode == HiHealthError.PARAM_INVALID ->
-                                    Log.e(TAG, "Param invalid")
+                                    Log.e("xxx", "Param invalid")
                                 // 运动健康版本过低, 不支持此功能
                                 resultCode == HiHealthError.ERR_HEALTH_VERSION_IS_NOT_SUPPORTED ->
-                                    Log.e(TAG, "Health application need to be updated")
+                                    Log.e("xxx", "Health application need to be updated")
                                 // HMS Core版本过低
                                 resultCode == HiHealthError.ERR_HMS_UNAVAILABLE_VERSION ->
-                                    Log.e(TAG, "HMS version is too early")
+                                    Log.e("xxx", "HMS version is too early")
                                 // 授权失效
                                 resultCode == HiHealthError.ERR_PERMISSION_EXCEPTION ->
-                                    Log.e(TAG, "Permission denied")
+                                    Log.e("xxx", "Permission denied")
                                 // 未同意运动健康隐私协议
                                 resultCode == HiHealthError.ERR_PRIVACY_USER_DENIED ->
-                                    Log.e(TAG, "Privacy user denied")
+                                    Log.e("xxx", "Privacy user denied")
                                 // 网络异常
                                 resultCode == HiHealthError.ERR_NETWORK ->
-                                    Log.e(TAG, "Network request failed")
+                                    Log.e("xxx", "Network request failed")
                                 // 测试权限的用户数量超过限制
                                 resultCode == HiHealthError.ERR_BETA_SCOPE_EXCEPTION ->
-                                    Log.e(TAG, "Beta scope permission denied")
+                                    Log.e("xxx", "Beta scope permission denied")
                                 // 其他错误，建议提示调用失败
                                 else ->
-                                    Log.e(TAG, "Other error, invoking method failed")
+                                    Log.e("xxx", "Other error, invoking method failed")
                             }
                         }
                     } catch (ex: Exception) {
