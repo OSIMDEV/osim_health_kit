@@ -141,7 +141,7 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
             endTime,
             HiHealthDataQueryOption(),
         )
-        cb?.success(suspendCancellableCoroutine {
+        val ret = suspendCancellableCoroutine {
             val retrievedData = mutableListOf<HiHealthSessionData>()
             try {
                 HiHealthDataStore.execQuery(context, hiHealthDataQuery, timeout) { resultCode, data ->
@@ -183,9 +183,12 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
             } catch (ex: Exception) {
                 ex.printStackTrace()
             } finally {
+                Log.e("xxx", "=========> ${retrievedData.size}")
                 it.resume(retrievedData)
             }
-        })
+        }
+        Log.e("xxx", "++++++++++++++------> ${ret.size}")
+        cb?.success(ret)
     }
 
     override fun getVendor(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
