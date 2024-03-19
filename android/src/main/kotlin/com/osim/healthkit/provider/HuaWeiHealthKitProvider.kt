@@ -178,7 +178,7 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
         )
     }
 
-    override fun navToSettings(context: Activity?, cb: MethodChannel.Result?) {
+    override fun navToSettings(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
         context?.apply {
             try {
                 val appInfo = context.packageManager.getApplicationInfo(packageName, PackageManager.GET_META_DATA)

@@ -29,7 +29,7 @@ abstract class BaseHealthKitProvider : IHealthKitProvider {
         cb?.notImplemented()
     }
 
-    override fun navToSettings(context: Activity?, cb: MethodChannel.Result?) {
+    override fun navToSettings(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
         cb?.notImplemented()
     }
 }
