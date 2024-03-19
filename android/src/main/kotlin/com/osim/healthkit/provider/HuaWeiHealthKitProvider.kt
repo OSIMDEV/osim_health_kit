@@ -114,10 +114,10 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
         val retrievedData = mutableListOf<HiHealthSessionData>()
         testAuth(context) { authorized ->
             if (authorized) {
-                val startTime = (params?.get("startTime") as? Long) ?: -1L
-                val endTime = (params?.get("endTime") as? Long) ?: -1L
-                val timeout = (params?.get("timeout") as? Int) ?: -1
-                if (startTime >= 0L && endTime >= 0L && timeout >= 0L) {
+                val startTime = (params?.get("startTime") as? Double)?.toLong() ?: -1L
+                val endTime = (params?.get("endTime") as? Double)?.toLong() ?: -1L
+                val timeout = (params?.get("timeout") as? Double)?.toInt() ?: -1
+                if (startTime >= 0L && endTime >= 0L && timeout >= 0) {
                     val hiHealthDataQuery = HiHealthDataQuery(
                         HiHealthSessionType.DATA_SESSION_CORE_SLEEP,
                         startTime, endTime, HiHealthDataQueryOption(),)

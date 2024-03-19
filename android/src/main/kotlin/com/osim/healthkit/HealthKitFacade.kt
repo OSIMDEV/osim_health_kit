@@ -2,7 +2,6 @@ package com.osim.healthkit
 
 import android.app.Activity
 import android.app.Application
-import android.util.Log
 import com.blankj.utilcode.util.Utils
 import io.flutter.plugin.common.MethodCall
 import io.flutter.plugin.common.MethodChannel
