@@ -54,7 +54,7 @@ class MethodChannelHealthkit extends HealthkitPlatform {
 
   @override
   Future<String?> getManufacturer() => methodChannel.invokeMethod<String?>(
-        'getVendor',
+        'getManufacturer',
       );
 
   @override
