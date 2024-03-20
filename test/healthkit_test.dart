@@ -40,6 +40,16 @@ class MockHealthkitPlatform
   Future<String?> getVendor(String provider) => throw UnimplementedError();
 
   @override
+  Future<String?> getIP(
+    String provider, {
+    bool? wifi,
+    bool? ipv6,
+  }) {
+    // TODO: implement getIP
+    throw UnimplementedError();
+  }
+
+  @override
   Future<void> navToSettings(String provider) => throw UnimplementedError();
 }
 

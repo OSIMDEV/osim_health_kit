@@ -11,7 +11,7 @@ class MethodChannelHealthkit extends HealthkitPlatform {
 
   @override
   Future<bool?> requireAuth(String provider) =>
-      methodChannel.invokeMethod<bool>(
+      methodChannel.invokeMethod<bool?>(
         'requireAuth',
         {
           "provider": provider,
@@ -19,7 +19,8 @@ class MethodChannelHealthkit extends HealthkitPlatform {
       );
 
   @override
-  Future<bool?> cancelAuth(String provider) => methodChannel.invokeMethod<bool>(
+  Future<bool?> cancelAuth(String provider) =>
+      methodChannel.invokeMethod<bool?>(
         'cancelAuth',
         {
           "provider": provider,
@@ -27,7 +28,7 @@ class MethodChannelHealthkit extends HealthkitPlatform {
       );
 
   @override
-  Future<bool?> testAuth(String provider) => methodChannel.invokeMethod<bool>(
+  Future<bool?> testAuth(String provider) => methodChannel.invokeMethod<bool?>(
         'testAuth',
         {
           "provider": provider,
@@ -53,10 +54,25 @@ class MethodChannelHealthkit extends HealthkitPlatform {
 
   @override
   Future<String?> getVendor(String provider) =>
-      methodChannel.invokeMethod<String>(
+      methodChannel.invokeMethod<String?>(
         'getVendor',
         {
           "provider": provider,
+        },
+      );
+
+  @override
+  Future<String?> getIP(
+    String provider, {
+    bool? wifi,
+    bool? ipv6,
+  }) =>
+      methodChannel.invokeMethod<String?>(
+        'getVendor',
+        {
+          "provider": provider,
+          if (wifi ?? false) "wifi": wifi,
+          if (ipv6 ?? false) "ipv6": ipv6,
         },
       );
 

@@ -29,6 +29,10 @@ abstract class BaseHealthKitProvider : IHealthKitProvider {
         cb?.notImplemented()
     }
 
+    override fun getIP(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
+        cb?.notImplemented()
+    }
+
     override fun navToSettings(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
         cb?.notImplemented()
     }

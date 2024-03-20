@@ -28,6 +28,17 @@ class HealthKit {
   Future<String?> getVendor(String provider) =>
       HealthkitPlatform.instance.getVendor(provider);
 
+  Future<String?> getIP(
+    String provider, {
+    bool? wifi = false,
+    bool? ipv6 = false,
+  }) =>
+      HealthkitPlatform.instance.getIP(
+        provider,
+        wifi: wifi,
+        ipv6: ipv6,
+      );
+
   Future<void> navToSettings(String provider) =>
       HealthkitPlatform.instance.navToSettings(provider);
 }

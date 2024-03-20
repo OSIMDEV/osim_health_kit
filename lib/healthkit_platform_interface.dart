@@ -48,6 +48,14 @@ abstract class HealthkitPlatform extends PlatformInterface {
     throw UnimplementedError('get vendor has not been implemented.');
   }
 
+  Future<String?> getIP(
+    String provider, {
+    bool? wifi,
+    bool? ipv6,
+  }) async {
+    throw UnimplementedError('get IP has not been implemented.');
+  }
+
   Future<void> navToSettings(String provider) async {
     throw UnimplementedError('navToSettings() has not been implemented.');
   }
