@@ -68,7 +68,7 @@ class MethodChannelHealthkit extends HealthkitPlatform {
     bool? ipv6,
   }) =>
       methodChannel.invokeMethod<String?>(
-        'getVendor',
+        'getIP',
         {
           "provider": provider,
           if (wifi ?? false) "wifi": wifi,
