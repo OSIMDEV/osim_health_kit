@@ -53,24 +53,18 @@ class MethodChannelHealthkit extends HealthkitPlatform {
       );
 
   @override
-  Future<String?> getVendor(String provider) =>
-      methodChannel.invokeMethod<String?>(
+  Future<String?> getManufacturer() => methodChannel.invokeMethod<String?>(
         'getVendor',
-        {
-          "provider": provider,
-        },
       );
 
   @override
-  Future<String?> getIP(
-    String provider, {
+  Future<String?> getIP({
     bool? wifi,
     bool? ipv6,
   }) =>
       methodChannel.invokeMethod<String?>(
         'getIP',
         {
-          "provider": provider,
           if (wifi ?? false) "wifi": wifi,
           if (ipv6 ?? false) "ipv6": ipv6,
         },

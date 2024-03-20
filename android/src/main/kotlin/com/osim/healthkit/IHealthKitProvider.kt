@@ -16,9 +16,5 @@ interface IHealthKitProvider {
 
     fun loadData(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?)
 
-    fun getVendor(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?)
-
-    fun getIP(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?)
-
     fun navToSettings(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?)
 }

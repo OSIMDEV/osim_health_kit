@@ -37,11 +37,10 @@ class MockHealthkitPlatform
 
   @override
   // TODO: implement vendor
-  Future<String?> getVendor(String provider) => throw UnimplementedError();
+  Future<String?> getManufacturer() => throw UnimplementedError();
 
   @override
-  Future<String?> getIP(
-    String provider, {
+  Future<String?> getIP({
     bool? wifi,
     bool? ipv6,
   }) {

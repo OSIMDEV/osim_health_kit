@@ -6,8 +6,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.util.Log
-import com.blankj.utilcode.util.DeviceUtils
-import com.blankj.utilcode.util.NetworkUtils
 import com.huawei.hihealth.error.HiHealthError
 import com.huawei.hihealthkit.HiHealthDataQuery
 import com.huawei.hihealthkit.HiHealthDataQueryOption
@@ -205,32 +203,6 @@ class HuaWeiHealthKitProvider : BaseHealthKitProvider() {
                 it.resume(retrievedData)
             }
         })
-    }
-
-    override fun getVendor(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
-        cb?.success(
-            try {
-                DeviceUtils.getManufacturer()
-            } catch (ex: Exception) {
-                ""
-            }
-        )
-    }
-
-    override fun getIP(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {
-        cb?.success(
-            try {
-                val wifi = params?.contains("wifi") ?: false
-                if (wifi) {
-                    NetworkUtils.getIpAddressByWifi()
-                } else {
-                    val ipv6 = params?.contains("ipv6") ?: false
-                    NetworkUtils.getIPAddress(!ipv6)
-                }
-            } catch (ex: Exception) {
-                ""
-            }
-        )
     }
 
     override fun navToSettings(context: Activity?, cb: MethodChannel.Result?, params: Map<*, *>?) {

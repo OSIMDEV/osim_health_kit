@@ -25,16 +25,14 @@ class HealthKit {
         timeout,
       );
 
-  Future<String?> getVendor(String provider) =>
-      HealthkitPlatform.instance.getVendor(provider);
+  Future<String?> getManufacturer() =>
+      HealthkitPlatform.instance.getManufacturer();
 
-  Future<String?> getIP(
-    String provider, {
+  Future<String?> getIP({
     bool? wifi = false,
     bool? ipv6 = false,
   }) =>
       HealthkitPlatform.instance.getIP(
-        provider,
         wifi: wifi,
         ipv6: ipv6,
       );
