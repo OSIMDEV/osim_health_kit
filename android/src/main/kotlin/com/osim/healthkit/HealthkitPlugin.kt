@@ -2,6 +2,7 @@ package com.osim.healthkit
 
 import android.app.Activity
 import android.app.Application
+import android.util.Log
 import io.flutter.embedding.engine.plugins.FlutterPlugin
 import io.flutter.embedding.engine.plugins.activity.ActivityAware
 import io.flutter.embedding.engine.plugins.activity.ActivityPluginBinding
@@ -23,7 +24,9 @@ class HealthkitPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
     channel = MethodChannel(flutterPluginBinding.binaryMessenger, "healthkit")
     channel.setMethodCallHandler(this)
-    HealthKitFacade.mount(flutterPluginBinding.applicationContext as Application)
+    (flutterPluginBinding.applicationContext as? Application)?.apply {
+      HealthKitFacade.mount(this)
+    }
   }
 
   override fun onAttachedToActivity(binding: ActivityPluginBinding) {
@@ -47,7 +50,9 @@ class HealthkitPlugin: FlutterPlugin, MethodCallHandler, ActivityAware {
   }
 
   override fun onDetachedFromEngine(binding: FlutterPlugin.FlutterPluginBinding) {
-    HealthKitFacade.unmount(binding.applicationContext as Application)
+    (binding.applicationContext as? Application)?.apply {
+      HealthKitFacade.unmount(this)
+    }
     channel.setMethodCallHandler(null)
   }
 }
